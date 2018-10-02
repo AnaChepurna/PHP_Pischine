@@ -7,15 +7,41 @@
 	<link rel="stylesheet" type="text/css" href="doft.css">
 </head>
 <body>
-	<!-- <img id="cheat" src="resources/doft.jpg"> -->
-
 	<div id="header" class="block">
-		<img id="dot4"src="resources/day_of_the_42.png">
+		<img id="dot4" src="resources/day_of_the_42.png" title="DIT42" alt="DIT42">
+		<img id="loupe" src="resources/loupe.png" title="Loupe" alt="Loupe">
+		<a id="exit_link" href="www.relaischateaux.com." title="Disconnect">
+			<img id="exit" src="resources/close.gif" alt="Disconnect" title="Start from the beginning">
+		</a>
+		<a id="reload_link" href="http://www.disney.com" title="Start from the beginning">
+			<img id="reload" src="resources/reload.png" alt="Start from the beginning" title="Start from the beginning">
+		</a>
 	</div>
-	<div id="left" class="block"></div>
-	<div id="right" class="block"></div>
+	<div id="left" class="block">
+		<img id="arrow" src="resources/arrow.png" title="Advance" alt="Advance">
+		<img id="main" src="resources/main.png" title="Take" alt="Take">
+		<img id="oeil" src="resources/oeil.png" title="Look" alt="Look">
+		<img id="outil" src="resources/outil.png" title="Use" alt="Use">
+		<img id="chat" src="resources/chat-icon.png" title="Speek" alt="Speek">
+	</div>
+	<div id="right" class="block">
+		<img id="dp" src="resources/book.png" title="Book" alt="Book">
+		<img id="towel" src="resources/towel.png" title="Towel" alt="Towel">
+		<div id="wall" title="Wall"></div>
+	</div>
 	<div id="center" class="block">
-		<img id="cluster" src="resources/cluster.jpg">
+		<img id="cluster" src="resources/cluster.jpg" title="Cluster" alt="Cluster">
+		<map>
+				<area target="" alt="IKEA" title="IKEA" href="http://www.ikea.com" coords="470,1500,300,300" shape="rect">
+				<area target="" alt="APPLE" title="APPLE" href="http://www.apple.com" coords="1300,300,780,500" shape="rect">
+		</map>
+	</div>
+	<div id="vous" class="block">
+		<p id="text">Vous <span id="strong_text">entrez</span> alors dans une grande piece remplie</p>
+		<p id="text2">d'<span id="shadow_text">ordinateurs</span>...</p>
+		<p id="text3"><i id="italic_text">- Bonjour, vous &ecirc;tes nouveau ici ?</i></p>
+		<input type="text" name="reply">
+		<button>Repondre</button>
 	</div>
 </body>
 </html>
