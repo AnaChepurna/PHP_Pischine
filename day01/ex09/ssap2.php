@@ -1,7 +1,18 @@
 #!/usr/bin/php
 <?php
+	function ft_split($arg)
+	{
+		$arg = explode(" ", $arg);
+		$i = 0;
+		foreach ($arg as $arr) {
+			if ($arr === "")
+				unset($arg[$i]);
+			$i++;
+		}
+		return ($arg);
+	}
 
-function	is_chr($chr)
+	function	is_chr($chr)
 	{
 		$i = ord($chr);
 		if (($i >= 97 && $i <= 122) || ($i >= 65 && $i <= 90))
@@ -9,6 +20,7 @@ function	is_chr($chr)
 		else
 			return FALSE;
 	}
+
 	function	is_num($chr)
 	{
 		$i = ord($chr);
@@ -18,43 +30,51 @@ function	is_chr($chr)
 			return FALSE;
 	}
 
-	include("../ex03/ft_split.php");
+	function get_value($c)
+	{
+		if (is_chr($c))
+			return (ord($c));
+		if (is_num($c))
+			return (ord($c) + 100);
+		return (ord($c) + 200);
+	}
+
+	function str_compare($a, $b)
+	{
+		$i = 0;
+		while ($a[$i] || $b[$i])
+		{
+			$ca = get_value($a[$i]);
+			$cb = get_value($b[$i]);
+			if ($ca != $cb)
+				return ($ca - $cb);
+			$i++;
+		}
+		return (0);
+	}
+
+	function ft_sort($arg)
+	{
+		$i = 0;
+		while ($i < count($arg) - 1)
+		{
+			if (str_compare($arg[$i], $arg[$i + 1]) > 0)
+			{
+				$buf = $arg[$i];
+				$arg[$i] = $arg[$i + 1];
+				$arg[$i + 1] = $buf;
+				if ($i)
+					$i--;
+			}
+			else
+				$i++;
+		}
+		return ($arg);
+	}
+
 	unset($argv[0]);
 	$str = implode(" ", $argv);
-	$arr = ft_split($str);
-	foreach ($arr as $val) {
-		echo $val."\n";
-	}
-	echo "\n";
-	$arr_chr = array();
-	$arr_num = array();
-	$i = 0;
-	foreach ($arr as $val) {
-		if (is_chr($val[0]))
-		{
-			echo $val." char\n";
-			array_push($arr_chr, $val);
-			unset($arr[$i]);
-		}
-		else if (is_num($val[0]))
-		{
-			echo $val." num\n";
-			array_push($arr_num, $vasl);
-			unset($arr[$i]);
-		}
-		else
-			echo $val." spec\n";
-		$i++;
-	}
-	echo "\n";
-
-	foreach ($arr_chr as $val) {
-		echo $val."\n";
-	}
-	foreach ($arr_num as $val) {
-		echo $val."\n";
-	}
-	foreach ($arr as $val) {
+	foreach (ft_sort($arg) as $val) {
 		echo $val."\n";
 	}
 ?>
