@@ -16,7 +16,7 @@ li {
 	list-style-type: none;
 }
 li:hover {
-	background-color: #f5e76a;
+	background-color: pink;
 }
 a {
 	text-decoration: none;
@@ -51,7 +51,7 @@ span {
 }
 
 .hat {
-	background-color: #607d8b;
+	background-color: grey;
 	position: absolute;
 	text-align: left;
 	width: 300px;
@@ -61,17 +61,17 @@ span {
 }
 
 .head-list {
-	background-color: #607d8b;
+	background-color: grey;
 	text-align: left;
 	width: 300px;
 	height: 60px;s
 }
 .head-list:hover {
-	background-color: lightgreen;
+	background-color: lightblue;
 }
 
 .hat:hover {
-	background-color: lightgreen;
+	background-color: lightblue;
 }
 
 .list-menu {

@@ -74,7 +74,7 @@
 
 	unset($argv[0]);
 	$str = implode(" ", $argv);
-	foreach (ft_sort($arg) as $val) {
+	foreach (ft_sort($argv) as $val) {
 		echo $val."\n";
 	}
 ?>
