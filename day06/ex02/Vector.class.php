@@ -18,14 +18,16 @@ Class Vector {
 			$this->_z = $arr['dest']->getZ();
 			$this->_w = 0;
 			if (isset($arr["orig"]) && $arr['orig'] instanceof Vertex)
-			{
-					$this->_x -= $arr['dest']->getX();
-					$this->_y -= $arr['dest']->getY();
-					$this->_z -= $arr['dest']->getZ();
-			}
+				$orig = $arr['orig'];
+			else
+				$orig = new Vertex (array ("x" => 0, "y" => 0, "z" => 0, "w" => 1));
+			$this->_x -= $orig->getX();
+			$this->_y -= $orig->getY();
+			$this->_z -= $orig->getZ();
 		}
 		if (self::$verbose)
 			print($this." constructed.\n");
+		//var_dump($this);
 	}
 
 	public function __destruct()
@@ -60,9 +62,63 @@ Class Vector {
     	$x = $this->_x / $len;
     	$y = $this->_y / $len;
     	$z = $this->_z / $len;
-    	return (new Vector(array("x" => $x, "y" = $y, "z" = $z)));
+    	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
+    	return (new Vector(array( "dest" => $dest)));
     }
 
     public function add(Vector $rhs)
+    {
+    	$x = $this->_x + $rhs->_x;
+    	$y = $this->_y + $rhs->_y;
+    	$z = $this->_z + $rhs->_z;
+    	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
+    	return (new Vector(array( "dest" => $dest)));
+    }
+
+    public function sub(Vector $rhs)
+    {
+    	$x = $this->_x - $rhs->_x;
+    	$y = $this->_y - $rhs->_y;
+    	$z = $this->_z - $rhs->_z;
+    	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
+    	return (new Vector(array( "dest" => $dest)));
+    }
+
+    public function opposite()
+    {
+    	$x = $this->_x * -1;
+    	$y = $this->_y * -1;
+    	$z = $this->_z * -1;
+    	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
+    	return (new Vector(array( "dest" => $dest)));
+    }
+
+    public function scalarProduct($k)
+    {
+    	$x = $this->_x * $k;
+    	$y = $this->_y * $k;
+    	$z = $this->_z * $k;
+    	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
+    	return (new Vector(array( "dest" => $dest)));
+    }
+
+    public function dotProduct(Vector $rhs)
+    {
+    	return (float)(($this->_x * $rhs->_x) + ($this->_y * $rhs->_y) + ($this->_z * $rhs->_z));
+    }
+
+    public function cos(Vector $rhs)
+    {
+    	return (float)((($this->_x * $rhs->_x) + ($this->_y * $rhs->_y) + ($this->_z * $rhs->_z)) / sqrt((($this->_x * $this->_x) + ($this->_y * $this->_y) + ($this->_z * $this->_z)) * (($rhs->_x * $rhs->_x) + ($rhs->_y * $rhs->_y) + ($rhs->_z * $rhs->_z))));
+    }
+
+    public function crossProduct(Vector $rhs)
+    {
+    	$x = $this->_y * $rhs->_z - $this->_z * $rhs->_y;
+    	$y = $this->_z * $rhs->_x - $this->_x * $rhs->_z;
+    	$z = $this->_x * $rhs->_y - $this->_y * $rhs->_x;
+    	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
+    	return (new Vector(array( "dest" => $dest)));
+    }
 }
 ?>
