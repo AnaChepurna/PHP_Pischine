@@ -12,7 +12,6 @@ Class Vertex {
 
 	public function __construct($arr)
 	{
-		//var_dump($arr);
 		$this->_w = 1;
 		$this->_x = $arr["x"];
 		$this->_y = $arr["y"];

@@ -1,0 +1,17 @@
+
+<- Matrix ----------------------------------------------------------------------
+
+A Matrix class operate transformations, such as apply
+a scale change, a translation or a rotation to one or several vertices.
+
+An instance can be constructed like:
+new Matrix( array( 'preset' => Matrix::[preset], [key] => [value]) );
+
+The keys are :
+preset’: the matrix type to, mandatory. The value must be one of the Class constants previoulsy defined.
+’scale’: the scale factor, mandatory when ’preset’ is worth SCALE.
+’angle’: the rotation angle in radians, mandatory when ’preset’ is worth RX, RY
+or RZ.
+’vtc’: translation vector, mandatory when ’preset’ is worth TRANSLATION.
+’fov’: projectionfieldofviewindegreesmandatorywhen’preset’isworthPROJECTION. ’ratio’: projected image ratio, mandatory when ’preset’ is worth PROJECTION. ’near’: projection’snearclippingplanemandatorywhen’preset’isworthPROJECTION. ’far’: projection’sfarclippingplanemandatorywhen’preset’isworthPROJECTION.
+---------------------------------------------------------------------- Matrix ->

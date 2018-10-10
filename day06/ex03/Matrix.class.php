@@ -188,6 +188,5 @@ Class Matrix {
     $vertex = new Vertex(array("x" => $x, "y" => $y, "z" => $z, "w" => $w, "color" => $color));
     return $vertex;
   }
-
 }
 ?>
