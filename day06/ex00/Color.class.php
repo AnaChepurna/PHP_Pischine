@@ -5,29 +5,66 @@ Class Color {
 	public $green;
 	public $blue;
 
-	function __construct($rgb) {
-		if ($rgb["rgb"])
+	public function __construct($rgb) {
+		if (isset($rgb["rgb"]))
 		{
 			$rgb["rgb"] = intval($rgb["rgb"]);
-			$red = ($rgb["rgb"] >> 16) & 0xff;
-			$green = $rgb["rgb"] >> 8) & 0xff;
-			$green = $rgb["rgb"] & 0xff;
+			$this->red = ($rgb["rgb"] >> 16) & 0xff;
+			$this->green = ($rgb["rgb"] >> 8) & 0xff;
+			$this->blue = $rgb["rgb"] & 0xff;
 		}
-		elseif ($rgb["red"] && $rgb["green"] && $rgb["blue"])
+		elseif (isset($rgb["red"]) && isset($rgb["green"]) && isset($rgb["blue"]))
 		{
-			$red = intval($rgb["red"]);
-			$green = intval($rgb["green"]);
-			$green = intval($rgb["blue"]);
+			$this->red = $rgb["red"];
+			$this->green = $rgb["green"];
+			$this->blue = $rgb["blue"];
 		}
 		if (self::$verbose)
 			print($this." constructed.\n");
    }
 
-   function __toString()
+   public function __destruct()
    {
-   		return('Color( red: ' . sprintf("%3s", $red) .', green: ' . sprintf("%3s", $green) . ', blue: '. sprintf("%3s", $blue) .' )');
+   		if (self::$verbose)
+			print($this." destructed.\n");
    }
 
-   
+   public function __toString()
+   {
+   		return('Color( red: ' . sprintf("%3s", $this->red) .', green: ' . sprintf("%3s", $this->green) . ', blue: '. sprintf("%3s", $this->blue) .' )');
+   }
+
+   public static function doc()
+   {
+   		// $fd = fopen("Color.doc.txt", 'r');
+   		// echo "\n";
+   		// while ($fd && !feof($read))
+   		// 	echo fgets($fd);
+   		// echo "\n";
+   }
+
+   public function add($add)
+   {
+   	$red = $this->red + $add->red;
+   	$green = $this->green + $add->green;
+   	$blue = $this->blue + $add->blue;
+   	return new Color(array('red' => $red , 'green' => $green , 'blue' => $blue ));
+   }
+
+   public function sub($add)
+   {
+   	$red = $this->red - $add->red;
+   	$green = $this->green - $add->green;
+   	$blue = $this->blue - $add->blue;
+   	return new Color(array('red' => $red , 'green' => $green , 'blue' => $blue ));
+   }
+
+   public function mult($add)
+   {
+   	$red = $this->red * $add;
+   	$green = $this->green * $add;
+   	$blue = $this->blue * $add;
+   	return new Color(array('red' => $red , 'green' => $green , 'blue' => $blue ));
+   }
 }
 ?>
