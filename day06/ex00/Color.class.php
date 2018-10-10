@@ -36,11 +36,10 @@ Class Color {
 
    public static function doc()
    {
-   		// $fd = fopen("Color.doc.txt", 'r');
-   		// echo "\n";
-   		// while ($fd && !feof($read))
-   		// 	echo fgets($fd);
-   		// echo "\n";
+   		$fd = fopen("Color.doc.txt", 'r');
+   		while ($fd && !feof($fd))
+   			echo fgets($fd);
+   		echo "\n";
    }
 
    public function add($add)
