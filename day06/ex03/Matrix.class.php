@@ -155,5 +155,39 @@ Class Matrix {
       echo fgets($fd);
     echo "\n";
   }
+
+  private function _mult($row, $col, Matrix $rhs)
+  {
+    $res = $this->_matrix[$row]["vtcX"] * $rhs->_matrix["x"][$col];
+    $res += $this->_matrix[$row]["vtcY"] * $rhs->_matrix["y"][$col];
+    $res += $this->_matrix[$row]["vtcZ"] * $rhs->_matrix["z"][$col];
+    $res += $this->_matrix[$row]["vtxO"] * $rhs->_matrix["w"][$col];
+    return ($res);
+  } 
+
+  public function mult(Matrix $rhs)
+  {
+    $x = array("vtcX" => $this->_mult("x", "vtcX", $rhs), "vtcY" => $this->_mult("x", "vtcY", $rhs), "vtcZ" => $this->_mult("x", "vtcZ", $rhs), "vtxO" => $this->_mult("x", "vtxO", $rhs));
+    $y = array("vtcX" => $this->_mult("y", "vtcX", $rhs), "vtcY" => $this->_mult("y", "vtcY", $rhs), "vtcZ" => $this->_mult("y", "vtcZ", $rhs), "vtxO" => $this->_mult("y", "vtxO", $rhs));
+    $z = array("vtcX" => $this->_mult("z", "vtcX", $rhs), "vtcY" => $this->_mult("z", "vtcY", $rhs), "vtcZ" => $this->_mult("z", "vtcZ", $rhs), "vtxO" => $this->_mult("z", "vtxO", $rhs));
+    $w = array("vtcX" => $this->_mult("w", "vtcX", $rhs), "vtcY" => $this->_mult("w", "vtcY", $rhs), "vtcZ" => $this->_mult("w", "vtcZ", $rhs), "vtxO" => $this->_mult("w", "vtxO", $rhs));
+    $resMatrix = array("x" => $x, "y" => $y, "z" => $z, "w" => $w);
+    $res = new Matrix();
+    $res->_matrix = $resMatrix;
+    return $res;
+  }
+
+  public function transformVertex(Vertex $vtx)
+  {
+    $x = ($vtx->getX() * $this->_matrix["x"]["vtcX"]) + ($vtx->getY() * $this->_matrix["x"]["vtcY"]) + ($vtx->getZ() * $this->_matrix["x"]["vtcZ"]) + ($vtx->getW() * $this->_matrix["x"]["vtxO"]);
+    $y = ($vtx->getX() * $this->_matrix["y"]["vtcX"]) + ($vtx->getY() * $this->_matrix["y"]["vtcY"]) + ($vtx->getZ() * $this->_matrix["y"]["vtcZ"]) + ($vtx->getW() * $this->_matrix["y"]["vtxO"]);
+    $z = ($vtx->getX() * $this->_matrix["z"]["vtcX"]) + ($vtx->getY() * $this->_matrix["z"]["vtcY"]) + ($vtx->getZ() * $this->_matrix["z"]["vtcZ"]) + ($vtx->getW() * $this->_matrix["z"]["vtxO"]);
+    $w = ($vtx->getX() * $this->_matrix["w"]["vtcX"]) + ($vtx->getY() * $this->_matrix["w"]["vtcY"]) + ($vtx->getZ() * $this->_matrix["w"]["vtcZ"]) + ($vtx->getW() * $this->_matrix["w"]["vtxO"]);
+
+    $color = $vtx->getColor();
+    $vertex = new Vertex(array("x" => $x, "y" => $y, "z" => $z, "w" => $w, "color" => $color));
+    return $vertex;
+  }
+
 }
 ?>
