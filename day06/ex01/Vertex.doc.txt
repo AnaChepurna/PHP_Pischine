@@ -1,0 +1,9 @@
+
+<- Vertex ----------------------------------------------------------------------
+Representing vertex x, y, z, w coordinates and color by Color class.
+
+x, y, and z is manditory for constructor, also you can mark w and color. Examples are:
+new Vertex( array( 'x' => 1,  'y' => 1, 'z' => 1) );
+new Vertex( array( 'x' => 1,  'y' => 1, 'z' => 1, 'w' => 1) );
+new Vertex( array( 'x' => 1,  'y' => 1, 'z' => 1, 'w' => 1), 'color' = new Color($rgb));
+---------------------------------------------------------------------- Vertex ->
