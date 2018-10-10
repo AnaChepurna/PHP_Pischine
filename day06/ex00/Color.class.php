@@ -42,7 +42,7 @@ Class Color {
    		echo "\n";
    }
 
-   public function add($add)
+   public function add(Color $add)
    {
    	$red = $this->red + $add->red;
    	$green = $this->green + $add->green;
@@ -50,7 +50,7 @@ Class Color {
    	return new Color(array('red' => $red , 'green' => $green , 'blue' => $blue ));
    }
 
-   public function sub($add)
+   public function sub(Color $add)
    {
    	$red = $this->red - $add->red;
    	$green = $this->green - $add->green;

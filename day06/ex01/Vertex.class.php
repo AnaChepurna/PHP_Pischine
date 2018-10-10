@@ -7,12 +7,13 @@ Class Vertex {
 	private $_x;
 	private $_y;
 	private $_z;
-	private $_w = 1;
+	private $_w;
 	private $_color;
 
 	public function __construct($arr)
 	{
 		//var_dump($arr);
+		$this->_w = 1;
 		$this->_x = $arr["x"];
 		$this->_y = $arr["y"];
 		$this->_z = $arr["z"];
@@ -51,6 +52,31 @@ Class Vertex {
    		while ($fd && !feof($fd))
    			echo fgets($fd);
    		echo "\n";
+  	}
+
+  	public function getX()
+  	{
+  		return ($this->_x);
+  	}
+
+  	public function getY()
+  	{
+  		return ($this->_y);
+  	}
+
+  	public function getZ()
+  	{
+  		return ($this->_z);
+  	}
+
+  	public function getW()
+  	{
+  		return ($this->_w);
+  	}
+
+  	public function getColor()
+  	{
+  		return ($this->_color);
   	}
 }
 ?>
