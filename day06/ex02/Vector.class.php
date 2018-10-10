@@ -120,5 +120,25 @@ Class Vector {
     	$dest = new Vertex(array( 'x' => $x, 'y' => $y, 'z' => $z ));
     	return (new Vector(array( "dest" => $dest)));
     }
+
+    public function getX()
+  	{
+  		return ($this->_x);
+  	}
+
+  	public function getY()
+  	{
+  		return ($this->_y);
+  	}
+
+  	public function getZ()
+  	{
+  		return ($this->_z);
+  	}
+
+  	public function getW()
+  	{
+  		return ($this->_w);
+  	}
 }
 ?>
