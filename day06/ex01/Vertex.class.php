@@ -78,5 +78,30 @@ Class Vertex {
   	{
   		return ($this->_color);
   	}
+
+  	public function setX($x)
+  	{
+  		$this->_x = $x;
+  	}
+
+  	public function setY($y)
+  	{
+  		$this->_y = $y;
+  	}
+
+  	public function setZ($z)
+  	{
+  		$this->_z = $z;
+  	}
+
+  	public function setW($w)
+  	{
+  		$this->_w = $w;
+  	}
+
+  	public function setColor(Color $color)
+  	{
+  		$this->_color = $color;
+  	}
 }
 ?>
