@@ -2,7 +2,8 @@
 abstract class Spaceship {
 
 	protected $_name;
-	protected $_size;
+	protected $_width;
+	protected $_height;
 	protected $_sprite;
 	protected $_hp;
 	protected $_pp;
@@ -14,6 +15,9 @@ abstract class Spaceship {
 	protected function __construct($name, $size, $sprite, $hp, $pp, $speed, $handling, $shield, $weapons)
 	{
 		$this->_name = $name;
+		$wh = explode("*", $size);
+		$this->_width = $wh[0];
+		$this->_height = $wh[1];
 		$this->_size = $size;
 		$this->_sprite = $sprite;
 		$this->_hp = $hp;
