@@ -7,25 +7,29 @@ class UnholyFactory {
 
 	public function absorb($somebody)
 	{
-		var_dump($this->_army);
-		echo "-------";
-		var_dump($somebody);
 		if ($somebody instanceof Fighter)
 		{
-			var_dump($this->_army[$somebody->getType()]);
 			if (isset($this->_army[$somebody->getType()]))
-			{
-				echo "ebala ";
-			}
+				echo "(Factory already absorbed a fighter of type ".$somebody->getType().")\n";
 			else
 			{
 				$this->_army = array_merge($this->_army, array($somebody->getType() => $somebody));
-				echo "neebala ";
+				echo "(Factory absorbed a fighter of type ".$somebody->getType().")\n";
 			}
 		}
 		else
-			echo "idn ";
-		echo "/////////////////////////////";
+			echo "(Factory can't absorb this, it's not a fighter)\n";
+	}
+
+	public function fabricate($somebody)
+	{
+		if (isset($this->_army[$somebody]))
+		{
+			echo "(Factory fabricates a fighter of type ".$somebody.")\n";
+			return clone $this->_army[$somebody];
+		}
+		else
+			echo "(Factory hasn't absorbed any fighter of type ".$somebody.")\n";
 	}
 }
 

@@ -1,4 +1,7 @@
 <?php
+
+include_once('IFighter.class.php');
+
 class NightsWatch implements IFighter {
 
 	private $_nw = array();

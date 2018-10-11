@@ -1,10 +1,10 @@
 <?php
 
-class Fighter {
+abstract class Fighter {
 
 	private $_type;
 
-	// abstract public function fight($target);
+	abstract public function fight($target);
 
 	public function __construct($type)
 	{
